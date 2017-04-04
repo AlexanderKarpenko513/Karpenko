@@ -9,8 +9,9 @@ if(!empty ($_POST['login']) && !empty($_POST['pass']))
     {
         if ($user['login'] == $_POST['login'] && ($_POST['pass'] == $user['pass']))
         {
-            $_SESSION['users'] = $user;
             $_SESSION['auth'] = true;
+            $_SESSION['user'] = $user;
+
         }
         else echo "<a href=register.php>Регистрация</a>";
     }

@@ -11,7 +11,7 @@ $walk =  function ($user) use ($search)
     echo "<tr><td> {$user['name']} </td><td>{$user['login']}</td></tr>";
     echo '</table>';
     }
-    elseif ($user['login'] !== $_SESSION['login'])
+    elseif ($user['name'] !== $_SESSION['username'])
     {
         echo "<a href=register.php>Регистрация</a><br>";
         echo "<a href=authorization.php>Автороизация</a>";
