@@ -7,20 +7,22 @@ session_start();
     $_SESSION['users'] = [];
 }
 
+$check = function ($pass) {
+
+    preg_match ("#((?=.*[a-z])(?=.*[A-Z]).{8,}))#", $pass, $r_pass);
+     if(!count($r_pass)){
+         echo $q =1;
+     }
+
+   // preg_match ("/([\w.]+@[a-zA-Z-]+?\.([a-zA-Z.]){2,6})/",  $login, $users);
+   // preg_match ("/([a-zA-Z]{2,})/", $name, $names);
 
 
-$user = [
-    'name' => $_POST['username'],
-    'login' => $_POST['login'],
-    'pass'=> $_POST['pass']
+    $user = [
+        'name' => $_POST['username'],
+        'login' => $_POST['login'],
+        'pass'=> $_POST['pass']
     ];
-
-$reg_check = function ($pass,$login,$name) {
-    preg_match("/([a-zA-Z]{2,})/", $name, $names);
-    preg_match("/((?=.*[a-z])(?=.*[A-Z]).{8,}))/", $pass, $r_pass);
-    preg_match("/([\w.]+@[a-zA-Z-]+?\.([a-zA-Z.]){2,6})/",  $login, $userr);
-
-};
 
 if(!empty ($user['login']) && !empty($user['name'])&& !empty($user['pass'])&& ($user['pass'] == $_POST['r_pass']))
     {
@@ -28,9 +30,9 @@ if(!empty ($user['login']) && !empty($user['name'])&& !empty($user['pass'])&& ($
     echo "Registration successful";
     }
 
-if ($_POST){
-    $reg_check($_POST['pass'], $_POST['login'], $_POST['username']);
-}
+};
+$check($_POST['pass']);
+
 
 ?>
 
